@@ -120,12 +120,12 @@ button:hover {
 
 
 .loader {
-  border: 12px solid gray;
-  border-top: 12px solid black;
+  border: 18px solid white;
+  border-top: 18px solid black;
   border-radius: 100%;
   width: 100px;
   height: 100px;
-  align-content: center;
+  float: center;
   animation: spin 0.00001s linear infinite;
 }
 
