@@ -36,57 +36,84 @@
 
 /* Main */
 #navigation {
-    background-color: black;
-    text-align: center;
+  background-color: black;
+  text-align: center;
+  color: transparent;
+  font-family: Lato;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
     color: white;
-    font-family: Lato;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: gray;
+  }
+
+  .active {
+    background-color: white;
+  }
 }
 
 #main {
-    background: #ffffff url(paint.png) no-repeat fixed center;
-    background-size: cover;
-    text-align: center;
-    color: black;
-    font-family: Lato;
-    padding-top: 200px;
-    padding-bottom: 200px;
+  background: #ffffff url(paint.png) no-repeat fixed center;
+  background-size: cover;
+  text-align: center;
+  color: black;
+  font-family: Lato;
+  padding-top: 325px;
+  padding-bottom: 325px;
 }
 
 #footer {
-    background-color: black;
-    text-align: center;
-    color: white;
-    font-family: Lato;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  background-color: black;
+  text-align: center;
+  color: white;
+  font-family: Lato;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 
 /* Titles */
 h1 {
-    color: white;
-    text-align: center;
-    font-family: Lato;
-    font-size: 100px;
+  color: white;
+  text-align: center;
+  font-family: Lato;
+  font-size: 60px;
 }
 
+
 button {
-    font-family: LatoBold;
-    text-align: center;
-    height: 50px;
-    width: 200px;
-    background-color: White;
-    border-radius: 150px;
-    border: 4px solid Black;
+  font-family: LatoBold;
+  text-align: center;
+  height: 50px;
+  width: 200px;
+  background-color: White;
+  border-radius: 150px;
+  border: 4px solid Black;
 }
 
 button:hover {
-    font-family: LatoBold;
-    color: White;
-    background-color: Black;
-    cursor: pointer;
-    border-radius: 150px;
-    border: 4px solid White;
+  font-family: LatoBold;
+  color: White;
+  background-color: Black;
+  cursor: pointer;
+  border-radius: 150px;
+  border: 4px solid White;
 }
