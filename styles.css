@@ -1,0 +1,92 @@
+/* CSS STYLES FILE */
+
+
+/* Fonts */
+
+/* Lato Fonts */
+@font-face {
+  font-family: Lato;
+  src: url(Fonts/Lato/Lato-Regular.ttf);
+}
+@font-face {
+  font-family: LatoBold;
+  src: url(Fonts/Lato/Lato-Bold.ttf);
+}
+
+
+/* Poppins Fonts */
+@font-face {
+  font-family: Poppins;
+  src: url(Fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: PoppinsBold;
+  src: url(Fonts/Poppins/Poppins-Bold.ttf);
+}
+
+
+/* Keyframes */
+@keyframes example {
+  0%   {background-color: white;}
+  25%  {background-color: blue;}
+  50%  {background-color: green;}
+  100% {background-color: red;}
+}
+
+
+/* Main */
+#navigation {
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-family: Lato;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#main {
+    background: #ffffff url(paint.png) no-repeat fixed center;
+    background-size: cover;
+    text-align: center;
+    color: black;
+    font-family: Lato;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+#footer {
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-family: Lato;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* Titles */
+h1 {
+    color: white;
+    text-align: center;
+    font-family: Lato;
+    font-size: 100px;
+}
+
+button {
+    font-family: LatoBold;
+    text-align: center;
+    height: 50px;
+    width: 200px;
+    background-color: White;
+    border-radius: 150px;
+    border: 4px solid Black;
+}
+
+button:hover {
+    font-family: LatoBold;
+    color: White;
+    background-color: Black;
+    cursor: pointer;
+    border-radius: 150px;
+    border: 4px solid White;
+}
