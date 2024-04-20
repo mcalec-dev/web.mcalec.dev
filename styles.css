@@ -35,8 +35,8 @@
 
 
 /* Main */
-#navigation {
-  background-color: black;
+#nav {
+  background-image: url(paint.png);
   text-align: center;
   color: transparent;
   font-family: Lato;
@@ -62,13 +62,45 @@
   }
 
   li a:hover {
-    background-color: gray;
+    background-color: transparent;
+    font-family: LatoBold;
   }
 
   .active {
-    background-color: white;
+    background-color: transparent;
+    font-family: LatoBold;
   }
 }
+
+#nav1 {
+  background-image: url(paint.png);
+  text-align: center;
+  color: transparent;
+  font-family: Lato;
+  padding: 0px 0px 0px 8px;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding-top: 14px;
+    padding-left: 0px;
+    text-decoration: none;
+  }
+}
+
 
 #main {
   background: #ffffff url(paint.png) no-repeat fixed center;
@@ -81,12 +113,31 @@
 }
 
 #footer {
-  background-color: black;
+  background-color: #1c1c1c;
   text-align: center;
   color: white;
   font-family: Lato;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 12px;
+  padding-bottom: 28px;
+  text-decoration: none;
+  font-size: medium;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+  }
+
+  li a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
+  li {
+    display: inline;
+  }
 }
 
 
@@ -94,8 +145,8 @@
 h1 {
   color: white;
   text-align: center;
-  font-family: Lato;
-  font-size: 60px;
+  font-family: LatoBold;
+  font-size: xxx-large;
 }
 
 
@@ -108,6 +159,12 @@ button {
   border-radius: 150px;
   border: 4px solid Black;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff url(paint.png) no-repeat fixed center;
+}  
 
 button:hover {
   font-family: LatoBold;
