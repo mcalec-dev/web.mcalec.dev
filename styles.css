@@ -40,6 +40,7 @@
   text-align: center;
   color: transparent;
   font-family: Lato;
+  margin: auto;
   padding: 0px 0px 0px 0px;
 
   ul {
@@ -78,6 +79,7 @@
   text-align: center;
   color: transparent;
   font-family: Lato;
+  margin: auto;
   padding: 0px 0px 0px 8px;
 
   ul {
@@ -104,13 +106,19 @@
 
 
 #main {
-  background: #ffffff url(paint.png) no-repeat fixed center;
+  background-image: url(paint.png);
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: center;
+
+
   background-size: cover;
   text-align: center;
   color: black;
   font-family: Lato;
-  padding-top: 325px;
-  padding-bottom: 325px;
+  padding-top: 20vw;
+  padding-bottom: 20vw;
+  margin: auto;
 }
 
 #footer {
@@ -119,7 +127,8 @@
   color: white;
   font-family: Lato;
   padding-top: 12px;
-  padding-bottom: 28px;
+  padding-bottom: 30px;
+  margin: auto;
   text-decoration: none;
   font-size: medium;
 
@@ -162,9 +171,11 @@ button {
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  margin-top: 0vw;
+  padding: auto;
   background: #ffffff url(paint.png) no-repeat fixed center;
+  
 }  
 
 button:hover {
@@ -191,3 +202,41 @@ button:hover {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+
+/* Tablets & Phones */
+/*
+@media only screen and (min-width: 600px) {
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+*/
+
+/* Computers & Desktops */
+/*
+@media only screen and (min-width: 768px) {
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+*/
