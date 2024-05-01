@@ -175,7 +175,8 @@ html, body {
   margin-top: 0vw;
   padding: auto;
   background: #ffffff url(paint.png) no-repeat fixed center;
-  
+  overflow-x: hidden;
+  overflow-y: hidden;
 }  
 
 button:hover {
