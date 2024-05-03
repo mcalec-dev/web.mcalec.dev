@@ -72,6 +72,7 @@
     background-color: transparent;
     font-family: LatoBold;
   }
+  
 }
 
 #nav1 {
@@ -102,6 +103,7 @@
     padding-left: 0px;
     text-decoration: none;
   }
+  
 }
 
 
@@ -145,9 +147,11 @@
     text-align: center;
     text-decoration: none;
   }
+  
   li {
     display: inline;
   }
+  
 }
 
 
@@ -173,7 +177,6 @@ button {
 html, body {
   margin: 0px;
   margin-top: 0vw;
-  padding: auto;
   background: #ffffff url(paint.png) no-repeat fixed center;
 }  
 
@@ -193,7 +196,6 @@ button:hover {
   border-radius: 100%;
   width: 100px;
   height: 100px;
-  float: center;
   animation: spin 0.00001s linear infinite;
 }
 
