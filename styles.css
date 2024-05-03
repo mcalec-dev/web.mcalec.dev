@@ -72,8 +72,6 @@
     background-color: transparent;
     font-family: LatoBold;
   }
-  
-}
 
 #nav1 {
   background-image: url(paint.png);
@@ -103,8 +101,6 @@
     padding-left: 0px;
     text-decoration: none;
   }
-  
-}
 
 
 #main {
@@ -151,8 +147,6 @@
   li {
     display: inline;
   }
-  
-}
 
 
 /* Titles */
