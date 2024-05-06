@@ -42,13 +42,15 @@
   font-family: Lato;
   margin: auto;
   padding: 0px 0px 0px 0px;
-
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: transparent;
+    position: fixed;
+    top: 0;
+    width: 100%;
   }
   
   li {
@@ -63,7 +65,7 @@
     text-decoration: none;
   }
 
-  li a:hover {
+  li a:hover:not(.active) {
     background-color: transparent;
     font-family: LatoBold;
   }
