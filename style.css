@@ -12,6 +12,10 @@
   font-family: LatoBold;
   src: url(https://web.mcalec.dev/fonts/lato/bold.ttf);
 }
+@font-face {
+  font-family: LatoItalic;
+  src: url(https://web.mcalec.dev/fonts/regular-italic.ttf);
+}
 
 
 /* Poppins Fonts */
@@ -35,7 +39,7 @@
 
 
 /* Main */
-#nav {
+.nav {
   background-image: url(https://web.mcalec.dev/images/paint.png);
   text-align: center;
   color: transparent;
@@ -43,35 +47,35 @@
   margin: auto;
   padding: 0px 0px 0px 0px;
 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: transparent;
-  }
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+}
   
-  li {
-    float: right;
-  }
+.nav li {
+  float: right;
+}
   
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
+.nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-  li a:hover {
-    background-color: transparent;
-    font-family: LatoBold;
-  }
+.nav li a:hover {
+  background-color: transparent;
+  font-family: LatoBold;
+}
 
-  .active {
-    background-color: transparent;
-    font-family: LatoBold;
-  }
+.active {
+  background-color: transparent;
+  font-family: LatoBold;
+}
   
 }
 
@@ -206,6 +210,14 @@ button:hover {
 
 body {
   overflow: hidden; /* Hidden Scrollbars */
+}
+
+b {
+  font-family: LatoBold;
+}
+
+i {
+  font-family: LatoItalic;
 }
 
 /* Tablets & Phones */
