@@ -39,79 +39,52 @@
 
 
 /* Main */
-.nav {
+
+*{
+  box-sizing: border-box;
+}
+
+
+
+.navbar {
   background-image: url(https://web.mcalec.dev/images/paint.png);
   text-align: center;
   color: transparent;
   font-family: Lato;
   margin: auto;
   padding: 0px 0px 0px 0px;
-
-.nav ul {
+.navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: transparent;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
-  
-.nav li {
+.navbar li {
+  display: inline;
   float: right;
 }
-  
-.nav li a {
+.navbar li a {
   display: block;
   color: white;
-  text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
-
-.nav li a:hover {
-  background-color: transparent;
-  font-family: LatoBold;
+.navbar li a:hover:not(.active) {
+  background-color: darkgray;
 }
 
 .active {
-  background-color: transparent;
   font-family: LatoBold;
-}
-  
-}
-
-#nav1 {
-  background-image: url(https://web.mcalec.dev/images/paint.png);
-  text-align: center;
-  color: transparent;
-  font-family: Lato;
-  margin: auto;
-  padding: 0px 0px 0px 8px;
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: transparent;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding-top: 14px;
-    padding-left: 0px;
-    text-decoration: none;
-  }
-  
+  background-color: black;
 }
 
 
-#main {
+
+.main {
   background-image: url(https://web.mcalec.dev/images/paint.png);
   background-repeat: repeat;
   background-attachment: scroll;
@@ -127,7 +100,7 @@
   margin: auto;
 }
 
-#footer {
+.footer {
   background-color: #1c1c1c;
   text-align: center;
   color: white;
@@ -219,39 +192,3 @@ b {
 i {
   font-family: LatoItalic;
 }
-
-/* Tablets & Phones */
-/*
-@media only screen and (min-width: 600px) {
-  .col-s-1 {width: 8.33%;}
-  .col-s-2 {width: 16.66%;}
-  .col-s-3 {width: 25%;}
-  .col-s-4 {width: 33.33%;}
-  .col-s-5 {width: 41.66%;}
-  .col-s-6 {width: 50%;}
-  .col-s-7 {width: 58.33%;}
-  .col-s-8 {width: 66.66%;}
-  .col-s-9 {width: 75%;}
-  .col-s-10 {width: 83.33%;}
-  .col-s-11 {width: 91.66%;}
-  .col-s-12 {width: 100%;}
-}
-*/
-
-/* Computers & Desktops */
-/*
-@media only screen and (min-width: 768px) {
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
-}
-*/
