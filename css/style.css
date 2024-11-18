@@ -1,120 +1,98 @@
-@import url("https://cdn.mcalec.dev/font/lato.min.css");
-@import url("https://cdn.mcalec.dev/font/poppins.min.css");
-@import url("https://cdn.mcalec.dev/font/roboto.min.css");
+@import url(/web/css/font/lato.min.css);
+@import url(/web/css/font/poppins.min.css);
+@import url(/web/css/font/roboto.min.css);
 
-*{
-  box-sizing: border-box;
-}
+* {margin: 0;padding: 0;box-sizing: border-box;}
+::selection {color: #000; background-color: #fff;}
 
-body {
-  min-height: 100vh;
-  margin: 0;
-  position: relative;
-  background-image: url("https://cdn.mcalec.dev/image/jpeg/trees.jpeg");
-  background-repeat: repeat;
-  background-attachment: scroll;
-  background-position: center;
-}
+h1 {font-family: LatoBold;}
+h1 b {font-family: LatoBold;}
+h1 i {font-family: LatoBoldItalic;}
+h2 {font-family: LatoRegular;}
+h2 b {font-family: LatoBold;}
+h2 i {font-family: LatoRegularItalic;}
+h3 {font-family: LatoLight;}
+h3 b {font-family: LatoRegular;}
+h3 i {font-family: LatoLightItalic;}
+p {font-family: LatoRegular;}
+b {font-family: LatoBold;}
+i {font-family: LatoRegularItalic;}
 
-h1 {
-  position: static;
-  color: white;
-  text-align: center;
-  font-family: LatoBold;
-  font-size: 3em;
-}
-
-.main {
-  background-color: #000;
-  position: relative;
-  font-family: Lato;
-  padding-top: 45vh;
-  padding-bottom: 45vh;
-  text-align: center;
-  color: black;
-}
-
-body {
-  position: relative;
-  background-color: #000;
-}
-
-body::after {
-  content: '';
-  display: block;
-}
-
-.footer {
-  background-color: #000;
-  position: relative;
-  text-align: center;
-  font-family: Lato;
-  display: block;
-  margin-bottom: 13px;
-  text-decoration: none;
-  font-size: medium;
-  color: #fff;
-  
-  ul {
-    text-align: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: transparent;
-  }
-  
-  li a {
-    color: white;
-    text-align: center;
-    text-decoration: none;
-  }
-  
-  li {
-    display: inline;
-  }
-
-}
-
-
-button {
-  font-family: LatoBold;
-  text-align: center;
-  height: 50px;
-  width: 200px;
-  background-color: White;
-  border-radius: 150px;
-  border: 4px solid Black;
-}
-
-html, body {
-  margin: 0px;
-  margin-top: 0px;
-  padding-top: 0px;
-}  
-
-button:hover {
-  font-family: LatoBold;
-  color: White;
-  background-color: Black;
-  cursor: pointer;
-  border-radius: 150px;
-  border: 4px solid White;
-}
-
-b {
-  font-family: LatoBold;
-}
-
-i {
-  font-family: LatoItalic;
-}
-
-.center {
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
   display: flex;
-  text-align: center;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  place-items: center;
+  font-family: LatoRegular;
+  padding-top: 0;
+  margin-top: 0;
+  transition: background-color 0.4s ease-in-out;
+  z-index: 1000;
+  .site-name {
+    color: #ddd;
+    font-size: 1.5rem;
+    margin-left: 1.5rem;
+  }
+  .active {
+    font-family: LatoBold;
+  }
+  ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1.5rem;
+    margin-right: 2rem;
+  }
+  ul li a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+  }
+  ul li a:hover {
+    color: #999;
+  }
+}
+
+.transparent {background-color: rgba(0, 0, 0, 0);}
+.scrolled {background-color: rgba(0, 0, 0, 1);}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  .bgimage {
+    height: 100%;
+    background-image: url('/image/jpeg/trees.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    transform: scale(1.1);
+    right: 0;
+    left: 0;
+    z-index: 1;
+  }
+  .bgtext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ddd;
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2;
+  }
+}
+
+.content {
+  padding: 1.5rem;
+  background-color: #000;
+  color: #ddd;
+  text-align: center;
 }

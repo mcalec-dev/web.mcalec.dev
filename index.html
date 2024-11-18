@@ -1,39 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta content="web.mcalec.dev" property="og:title" />
+  <meta content="testing embed description stuff" property="og:description" />
+  <meta content="https://web.mcalec.dev/" property="og:url" />
+  <meta content="/image/jpeg/trees.jpeg" property="og:image" />
+  <meta content="#000" data-react-helmet="true" name="theme-color" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <title>web.mcalec.dev</title>
-  <link rel="icon" type="image/x-icon" href="https://cdn.mcalec.dev/image/logo/mcalec/mcalec-new.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <div>
-    <div style="position:sticky;top:0;">
-      <ul class="navbar">
-        <li><a href="//mcalec.dev">Main Site</a></li>
-        <li class="active"><a href="index.html"><b>Home</b></a></li>
-      </ul>
-      <ul class="navbar-left">
-        <li><a href="index.html">web.mcalec.dev</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="main">
-    <span><h1>mcalec</h1></span>
-    <!-- <embed width="620" height="340" wmode="transparent" src="https://www.youtube.com/embed/lgzCxqQUU5g?autoplay=1" frameborder="0" allowfullscreen></embed> -->
-    <!-- <embed src="sound.mp3" loop="true" autostart="true" width="0" height="0"> -->
-  </div>
-    
-  <div class="footer">
-    <p>web.mcalec.dev © 2024 McAlec</p>
+  <nav class="navbar transparent" id="navbar">
+    <div class="site-name">mcalec.dev</div>
     <ul>
-      <li><a href="https://mcalec.dev/license/"><u>License</u></a> | </li>
-      <li><a href="https://mcalec.dev/tos/"><u>Terms of Service</u></a> | </li>
-      <li><a href="https://mcalec.dev/privacy-policy/"><u>Privacy</u></a> | </li>
-      <li><a href="https://mcalec.dev/contact-us/"><u>Contact Me</u></a></li>
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><a href="/legal/">Legal</a></li>
     </ul>
+  </nav>
+
+  <div class="hero" id="home">
+    <div class="bgimage"></div>
+    <div class="bgtext"><h1>mcalec</h1></div>
   </div>
+
+  <div class="content">
+    <h1>Main Content Section</h1>
+    <p>This is the main content of the page.</p>
+  </div>
+
+  <script defer>
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 0) {
+        navbar.classList.remove('transparent');
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.add('transparent');
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
