@@ -2,4 +2,4 @@
   Access-Control-Allow-Origin: *
 
 /css/*
-  text/css
+  Content-Type: text/css
