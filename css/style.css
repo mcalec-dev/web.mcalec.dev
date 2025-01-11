@@ -5,21 +5,22 @@
 
 
 * {margin: 0;padding: 0;box-sizing: border-box;}
-::selection {color: #000;background-color: #fff;}
 body {cursor: url('/cursor/default.cur'), default;font-display: auto;}
+::selection {color: #000;background-color: #fff;}
 
-h1 {font-family: LatoRegular;}
+h1 {font-family: LatoRegular;cursor: url('/cursor/text.cur'), text;}
 h1 b {font-family: LatoBold;}
 h1 i {font-family: LatoBoldItalic;}
-h2 {font-family: LatoRegular;}
+h2 {font-family: LatoRegular;cursor: url('/cursor/text.cur'), text;}
 h2 b {font-family: LatoBold;}
 h2 i {font-family: LatoRegularItalic;}
-h3 {font-family: LatoLight;}
+h3 {font-family: LatoLight;cursor: url('/cursor/text.cur'), text;}
 h3 b {font-family: LatoRegular;}
 h3 i {font-family: LatoLightItalic;}
-p {font-family: LatoRegular;}
-b {font-family: LatoBold;}
-i {font-family: LatoRegularItalic;}
+p {font-family: LatoRegular;cursor: url('/cursor/text.cur'), text;}
+b {font-family: LatoBold;cursor: url('/cursor/text.cur'), text;}
+i {font-family: LatoRegularItalic;cursor: url('/cursor/text.cur'), text;}
+a {font-family: LatoRegular;cursor: url('/cursor/pointer.cur'), pointer;}
 
 .navbar {
   position: fixed;
@@ -53,7 +54,6 @@ i {font-family: LatoRegularItalic;}
     text-decoration: none;
     font-size: 1.25rem;
     transition: color 0.3s ease;
-    cursor: url('/cursor/pointer.cur'), pointer;
   }
   ul li a:hover {
     color: #999;
@@ -92,7 +92,6 @@ i {font-family: LatoRegularItalic;}
     text-align: center;
     z-index: 2;
     font-display: auto;
-    cursor: url(/cursor/text.cur), text;
   }
 }
 
