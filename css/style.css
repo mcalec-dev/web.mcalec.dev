@@ -6,9 +6,9 @@
 
 * {margin: 0;padding: 0;box-sizing: border-box;}
 ::selection {color: #000;background-color: #fff;}
-body {cursor: url('/cursor/default.cur'), default;font-display: swap;}
+body {cursor: url('/cursor/default.cur'), default;font-display: auto;}
 
-h1 {font-family: LatoBold;}
+h1 {font-family: LatoRegular;}
 h1 b {font-family: LatoBold;}
 h1 i {font-family: LatoBoldItalic;}
 h2 {font-family: LatoRegular;}
