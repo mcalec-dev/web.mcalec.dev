@@ -5,6 +5,9 @@
 
 * {margin: 0;padding: 0;box-sizing: border-box;}
 ::selection {color: #000; background-color: #fff;}
+body {
+  cursor: url(/cursor/default.cur), default;
+}
 
 h1 {font-family: LatoBold;}
 h1 b {font-family: LatoBold;}
@@ -51,6 +54,7 @@ i {font-family: LatoRegularItalic;}
     text-decoration: none;
     font-size: 1.25rem;
     transition: color 0.3s ease;
+    cursor: url(/cursor/pointer.cur), pointer;
   }
   ul li a:hover {
     color: #999;
@@ -88,6 +92,7 @@ i {font-family: LatoRegularItalic;}
     font-weight: bold;
     text-align: center;
     z-index: 2;
+    cursor: url(/cursor/text.cur), text;
   }
 }
 
