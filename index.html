@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/css/loader.css" />
   <link rel="icon" type="image/png" href="/img/mcalec-dev.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="web.mcalec.dev" />
@@ -17,6 +18,13 @@
   <script defer src="https://cloud.umami.is/script.js" data-website-id="37488ff3-cb26-4748-8ebe-8c7cb712f602"></script>
 </head>
 <body>
+  <div id="loaderContainer" class="loader-container">
+    <img src="/img/load.gif" alt="Loading..." class="loader-gif">
+    <div id="loaderText" class="loader-text">Loading...</div>
+  </div>
+
+  <script src="/js/loader.js"></script>
+
   <nav class="navbar transparent" id="navbar">
     <div class="site-name">mcalec.dev</div>
     <ul>
@@ -27,19 +35,17 @@
     </ul>
   </nav>
 
-  <div class="hero" id="home">
+  <div class="bg" id="home">
     <div class="bgimage"></div>
     <div class="bgtext"><h1>mcalec</h1></div>
   </div>
 
-  <div class="content">
-    <h2>More Coming Soon...</h2>
-    <div>
-      <p>For now use <a href="//old.mcalec.dev/">old.mcalec.dev</a> for any info.</p>
-    </div>
+  <div class="content" id="content">
+    <div><h2>More Coming Soon...</h2></div>
+    <div><p>For now use <a href="//old.mcalec.dev/">old.mcalec.dev</a> for any info.</p></div>
   </div>
 
-  <div class="footer">
+  <div class="footer" id="foot">
     <p>McAlec Development © 2025 McAlec</p>
     <ul>
       <li><a href="//old.mcalec.dev/legal/license/">License</a></li>
@@ -48,18 +54,6 @@
     </ul>
   </div>
 
-  <script defer>
-    const navbar = document.getElementById('navbar');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 0) {
-        navbar.classList.remove('transparent');
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.add('transparent');
-        navbar.classList.remove('scrolled');
-      }
-    });
-  </script>
+  <script src="/js/navbar.js" defer></script>
 </body>
 </html>
