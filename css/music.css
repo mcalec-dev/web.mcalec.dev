@@ -9,7 +9,6 @@ p {
   position: fixed;
   bottom: 0;
   right: 0;
-  max-width: 500px;
   min-width: 50px;
   width: auto;
   background-color: #333;
@@ -60,7 +59,6 @@ p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 200px;
   display: block;
   transform: translateY(calc(100% - 22.55px));
 }
