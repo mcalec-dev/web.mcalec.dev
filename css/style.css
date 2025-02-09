@@ -14,7 +14,13 @@ body {
   cursor: url('/img/cursor/default.cur'), default;
   font-display: auto;
   background-color: #000;
+  overflow: auto;
   scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 h1 {font-family: LatoRegular;}

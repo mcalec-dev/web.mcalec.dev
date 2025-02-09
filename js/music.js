@@ -1,39 +1,48 @@
 const songs = [{
-  title: "bruh-what",
+  title: "bruh-what.mp3",
   src: "bruh-what.mp3"
 }, {
-  title: "cats-remix",
+  title: "cats-remix.mp3",
   src: "cats-remix.mp3"
 }, {
-  title: "cats",
+  title: "cats.mp3",
   src: "cats.mp3"
 }, {
-  title: "hotel-california",
+  title: "hotel-california.mp3",
   src: "hotel-california.mp3"
 }, {
-  title: "i-wanna-be-like-you",
+  title: "i-wanna-be-like-you.mp3",
   src: "i-wanna-be-like-you.mp3"
 }, {
-  title: "moves-like-jagger",
+  title: "moves-like-jagger.mp3",
   src: "moves-like-jagger.mp3"
 }, {
-  title: "this-love",
+  title: "this-love.mp3",
   src: "this-love.mp3"
 }, {
-  title: "upside-down",
+  title: "upside-down.mp3",
   src: "upside-down.mp3"
 }, {
-  title: "veridis-quo",
+  title: "veridis-quo.mp3",
   src: "veridis-quo.mp3"
 }, {
-  title: "virtual-insanity",
+  title: "virtual-insanity.mp3",
   src: "virtual-insanity.mp3"
 }, {
-  title: "wiiu-eshop-music",
+  title: "wiiu-eshop-music.mp3",
   src: "wiiu-eshop-music.mp3"
 }, {
-  title: "wiiu-mii-maker",
+  title: "wiiu-mii-maker.mp3",
   src: "wiiu-mii-maker.mp3"
+}, {
+  title: "goat-simulator.mp3",
+  src: "goat-simulator.mp3"
+}, {
+  title: "song-for-denise.mp3",
+  src: "song-for-denise.mp3"
+}, {
+  title: "break-my-stride.mp3",
+  src: "break-my-stride.mp3"
 }];
 let currentSong = 0;
 function initMusic() {
