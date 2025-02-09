@@ -27,14 +27,18 @@
   <script src="/js/loader.js"></script>
 
   <div id="music-box">
-    <!--<img id="music-cover" src="/image/png/music.png" style="display: none;">-->
-    <p id="music-info"></p>
-    <button id="music" class="music" type="audio/mp3"></button> 
-    <button id="music-skip" class="music"></button>
-    <audio id="music-src" src=" " hidden=""></audio>
+    <button id="collapse-toggle">↔</button>
+    <div class="music-content">
+    <img id="music-cover" src="/image/png/music.png" style="display: none;">
+    <p class="toggle-link" id="music-info"></p>
+      <button id="music" class="music" type="audio/mp3"></button> 
+      <button id="music-skip" class="music"></button>
+      <audio id="music-src" src=" " hidden=""></audio>
+    </div>
   </div>
-
+  
   <script src="/js/music.js"></script>
+  <script src="/js/collapse.js"></script>
 
   <nav class="navbar transparent" id="navbar">
     <div class="site-name">mcalec.dev</div>
