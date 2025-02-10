@@ -56,33 +56,29 @@ function initMusic() {
   //    i.style.display = "block"
   //}
   function o() {
-      currentSong = (currentSong + 1) % songs.length,
-      e.src = `//cdn.mcalec.dev/audio/mp3/${songs[currentSong].src}`,
-      e.play(),
-      t.classList.add("paused"),
-      s.style.display = "block",
-      n.textContent = songs[currentSong].title,
-      c()
+    currentSong = (currentSong + 1) % songs.length,
+    e.src = `//cdn.mcalec.dev/audio/mp3/${songs[currentSong].src}`,
+    e.play(),
+    t.classList.add("paused"),
+    s.style.display = "block",
+    n.textContent = songs[currentSong].title,
+    c()
   }
   currentSong = Math.floor(Math.random() * songs.length),
   e.src = `//cdn.mcalec.dev/audio/mp3/${songs[currentSong].src}`,
-  //i.style.display = "none",
   t.addEventListener("click", (function() {
-      e.paused ? (e.play(),
-      t.classList.add("paused"),
-      s.style.display = "block",
-      n.textContent = songs[currentSong].title,
-      c()) : (e.pause(),
-      t.classList.remove("paused"),
-      s.style.display = "none",
-      n.textContent = "",
-      i.style.display = "none")
+    e.paused ? (e.play(),
+    t.classList.add("paused"),
+    s.style.display = "block",
+    n.textContent = songs[currentSong].title,
+    c()) : (e.pause(),
+    t.classList.remove("paused"))
   }
   )),
   s.addEventListener("click", o),
   e.volume = .5,
   e.addEventListener("ended", (function() {
-      o()
+    o()
   }
   ))
 }
