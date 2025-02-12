@@ -1,85 +1,76 @@
-const songs = [{
-  title: "bruh-what.mp3",
-  src: "bruh-what.mp3"
-}, {
-  title: "cats-remix.mp3",
-  src: "cats-remix.mp3"
-}, {
-  title: "cats.mp3",
-  src: "cats.mp3"
-}, {
-  title: "hotel-california.mp3",
-  src: "hotel-california.mp3"
-}, {
-  title: "i-wanna-be-like-you.mp3",
-  src: "i-wanna-be-like-you.mp3"
-}, {
-  title: "moves-like-jagger.mp3",
-  src: "moves-like-jagger.mp3"
-}, {
-  title: "this-love.mp3",
-  src: "this-love.mp3"
-}, {
-  title: "upside-down.mp3",
-  src: "upside-down.mp3"
-}, {
-  title: "veridis-quo.mp3",
-  src: "veridis-quo.mp3"
-}, {
-  title: "virtual-insanity.mp3",
-  src: "virtual-insanity.mp3"
-}, {
-  title: "wiiu-eshop-music.mp3",
-  src: "wiiu-eshop-music.mp3"
-}, {
-  title: "wiiu-mii-maker.mp3",
-  src: "wiiu-mii-maker.mp3"
-}, {
-  title: "goat-simulator.mp3",
-  src: "goat-simulator.mp3"
-}, {
-  title: "song-for-denise.mp3",
-  src: "song-for-denise.mp3"
-}, {
-  title: "break-my-stride.mp3",
-  src: "break-my-stride.mp3"
-}];
+let songs = [];
 let currentSong = 0;
-function initMusic() {
-  const e = document.getElementById("music-src")
-    , t = document.getElementById("music")
-    , s = document.getElementById("music-skip")
-    , n = document.getElementById("music-info")
-  //  , i = document.getElementById("music-cover");
-  //function c() {
-  //    i.src = `/audio/mp3/thumbnails/${songs[currentSong].src.replace(".mp3", ".png")}`,
-  //    i.style.display = "block"
-  //}
-  function o() {
-    currentSong = (currentSong + 1) % songs.length,
-    e.src = `//cdn.mcalec.dev/audio/mp3/${songs[currentSong].src}`,
-    e.play(),
-    t.classList.add("paused"),
-    s.style.display = "block",
-    n.textContent = songs[currentSong].title,
-    c()
+const baseUrls = [ // urls here
+  "//cdn.mcalec.dev/audio/mp3/",
+  "//cdn.mcalec.dev/audio/opus/",
+];
+async function loadSongs() {
+  try {
+    const response = await fetch('/json/songs.json'); // json here
+    songs = await response.json();
+    initMusic();
+  } catch (error) {
+    console.error('Error loading songs:', error);
   }
-  currentSong = Math.floor(Math.random() * songs.length),
-  e.src = `//cdn.mcalec.dev/audio/mp3/${songs[currentSong].src}`,
-  t.addEventListener("click", (function() {
-    e.paused ? (e.play(),
-    t.classList.add("paused"),
-    s.style.display = "block",
-    n.textContent = songs[currentSong].title,
-    c()) : (e.pause(),
-    t.classList.remove("paused"))
-  }
-  )),
-  s.addEventListener("click", o),
-  e.volume = .5,
-  e.addEventListener("ended", (function() {
-    o()
-  }
-  ))
 }
-initMusic();
+async function checkUrlExists(url) {
+  try {
+    const response = await fetch(url, { method: 'HEAD' });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+async function getValidSongUrl(songSrc) {
+  for (const baseUrl of baseUrls) {
+    const fullUrl = `${baseUrl}${songSrc}`;
+    if (await checkUrlExists(fullUrl)) {
+      return fullUrl;
+    }
+  }
+  return null;
+}
+async function initMusic() {
+  if (songs.length === 0) return;
+  const e = document.getElementById("music-src"),
+        t = document.getElementById("music"),
+        s = document.getElementById("music-skip"),
+        n = document.getElementById("music-info");
+    async function o() {
+      currentSong = (currentSong + 1) % songs.length;
+      const validUrl = await getValidSongUrl(songs[currentSong].src);
+      if (validUrl) {
+        e.src = validUrl;
+        e.play();
+        t.classList.add("paused");
+        s.style.display = "block";
+        n.textContent = songs[currentSong].title;
+      } else {
+        console.error(`Song not found: ${songs[currentSong].src}`);
+      }
+    }
+    currentSong = Math.floor(Math.random() * songs.length);
+    const initialUrl = await getValidSongUrl(songs[currentSong].src);
+    if (initialUrl) {
+      e.src = initialUrl;
+    } else {
+      console.error(`Initial song not found: ${songs[currentSong].src}`);
+    }
+    t.addEventListener("click", async function () {
+    if (e.paused) {
+      e.play();
+      t.classList.add("paused");
+      s.style.display = "block";
+      n.textContent = songs[currentSong].title;
+    } else {
+      e.pause();
+      t.classList.remove("paused");
+      s.style.display = "none";
+      n.textContent = "";
+    }
+  });
+  s.addEventListener("click", o);
+  e.volume = 0.75;
+  e.addEventListener("ended", o);
+}
+loadSongs();
