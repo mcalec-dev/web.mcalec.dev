@@ -110,7 +110,9 @@ p {
 }
 
 #music-box.collapsed #collapse-toggle {
-  transform: rotate(45deg);
+  margin-left: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #music-cover {

@@ -42,9 +42,11 @@ async function initMusic() {
       if (validUrl) {
         e.src = validUrl;
         e.play();
+        t.setAttribute("title", "Unpause the current song.")
         t.classList.add("paused");
         s.style.display = "block";
         n.textContent = songs[currentSong].title;
+        n.setAttribute("title", songs[currentSong].title);
       } else {
         console.error(`Song not found: ${songs[currentSong].src}`);
       }
@@ -53,6 +55,7 @@ async function initMusic() {
     const initialUrl = await getValidSongUrl(songs[currentSong].src);
     if (initialUrl) {
       e.src = initialUrl;
+      n.setAttribute("title", songs[currentSong].title);
     } else {
       console.error(`Initial song not found: ${songs[currentSong].src}`);
     }
@@ -60,13 +63,14 @@ async function initMusic() {
     if (e.paused) {
       e.play();
       t.classList.add("paused");
+      t.setAttribute("title", "Pause the current song.")
       s.style.display = "block";
       n.textContent = songs[currentSong].title;
+      n.setAttribute("title", songs[currentSong].title);
     } else {
       e.pause();
       t.classList.remove("paused");
-      s.style.display = "none";
-      n.textContent = "";
+      t.setAttribute("title", "Unpause the current song.");
     }
   });
   s.addEventListener("click", o);

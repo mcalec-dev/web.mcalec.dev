@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="//cdn.mcalec.dev/web/css/font/lato.min.css" defer />
   <link rel="stylesheet" type="text/css" href="/css/style.css" />
   <link rel="stylesheet" type="text/css" href="/css/loader.css" />
   <link rel="stylesheet" type="text/css" href="/css/music.css" />
@@ -27,13 +28,13 @@
   <script src="/js/loader.js"></script>
 
   <div id="music-box">
-    <button id="collapse-toggle"></button>
+    <button id="collapse-toggle" title="Collapse the music player."></button>
     <div class="music-content">
-      <img id="music-cover" src="//cdn.mcalec.dev/image/png/music.png" style="display: none;">
+      <!--<img id="music-cover" src="//cdn.mcalec.dev/image/png/music.png" style="display: none;">-->
       <p class="toggle-link" id="music-info"></p>
-      <button id="music" class="music" type="audio/mpeg"></button> 
-      <button id="music-skip" class="music"></button>
-      <audio id="music-src" src="" hidden=""></audio>
+      <button id="music" class="music" title="Unpause the current song."></button> 
+      <button id="music-skip" class="music" title="Skip the current song."></button>
+      <audio id="music-src" hidden=""></audio>
     </div>
   </div>
   

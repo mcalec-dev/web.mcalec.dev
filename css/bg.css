@@ -9,6 +9,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    pointer-events: none;
     filter: blur(8px);
     -webkit-filter: blur(8px);
     transform: scale(1.1);
