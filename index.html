@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" type="text/css" href="//cdn.mcalec.dev/web/css/font/lato.min.css" defer />
   <link rel="stylesheet" type="text/css" href="/css/style.css" />
   <link rel="stylesheet" type="text/css" href="/css/loader.css" />
   <link rel="stylesheet" type="text/css" href="/css/music.css" />
+  <link defer rel="stylesheet" type="text/css" href="//cdn.mcalec.dev/web/css/font/lato.min.css" />
   <link rel="icon" type="image/png" href="/img/mcalec-dev.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="web.mcalec.dev" />
@@ -38,8 +38,8 @@
     </div>
   </div>
   
-  <script src="/js/music.js"></script>
-  <script src="/js/collapse.js"></script>
+  <script defer src="/js/music.js"></script>
+  <script defer src="/js/collapse.js"></script>
 
   <nav class="navbar transparent" id="navbar">
     <div class="site-name">mcalec.dev</div>
@@ -51,25 +51,42 @@
     </ul>
   </nav>
 
+  <script src="/js/navbar.js" defer></script>
+
   <div class="bg" id="home">
     <div class="bgimage"></div>
     <div class="bgtext"><h1>mcalec</h1></div>
   </div>
 
   <div class="content" id="content">
-    <div><h2>More Coming Soon...</h2></div>
-    <div><p>For now use <a href="//old.mcalec.dev/">old.mcalec.dev</a> for any info.</p></div>
+    <div>
+      <div><h2>Welcome!</h2></div>
+      <div><p>This site may not be fully complete, I suggest you to use <a href="//old.mcalec.dev/">old.mcalec.dev</a> for any semi-outdated information.</p></div>
+    </div><br><br>
+    <div>
+      <div id="about-me"><h2>About Me</h2></div>
+      <div>
+        <p>Hi, I see that you landed here on my website! So let me tell you about myself (if you care). I am a <b>{REDACTED}</b> year old, <a href="https://www.w3schools.com/whatis/whatis_frontenddev.asp" target="_blank">Front-End Developer</a> and a <a href="https://www.w3schools.com/whatis/whatis_fullstack.asp">Full-stack Developer</a></p>
+        <p>I've created some small projects (i.e. this website) and created, now dead, Minecraft mods. I have many other web project on my <a href="https://git.mcalec.dev/" target="_blank">GitHub Organization</a>.</p><br>
+        <p>Also I know alot of PowerShell and Batch scripting. Not sure why I like it, but go check it out on my GitHub (linked above).</p>
+        <p>Some front-end languages I know are, HTML, CSS, and JavaScript. Web frameworks wise I am planning to learn (soon). Now backend isn't my strongest background but I know my way around <a href="https://nodejs.org/" target="_blank">Node.js</a> and <a href="https://expressjs.com/" target="_blank">Express.js</a>.</p><br>
+        <p>Please read;</p>
+        <p>I am <b>not a "hacker"</b>. If you think I'm a hacker look at my projects and it will say overwise.</p>
+        <p>All of the items here are open-source but the people who made the items are listed in the Credits.</p>
+        <p>If you went properly creditted for your work, please contact me.</p>
+      </div><br>
+      <div><h2>Unfinished Description.</h2></div>
+    </div>
   </div>
 
   <div class="footer" id="foot">
     <p>McAlec Development © 2025 McAlec</p>
     <ul>
       <li><a href="//old.mcalec.dev/legal/license/">License</a></li>
+      <li><a href="//old.mcalec.dev/legal/credits/">Credits</a></li>
       <li><a href="//old.mcalec.dev/legal/terms-of-use/">Terms of Use</a></li>
-      <li><a href="//old.mcalec.dev/legal/privacy-policy">Privacy Policy</a></li>
+      <li><a href="//old.mcalec.dev/legal/privacy-policy/">Privacy Policy</a></li>
     </ul>
   </div>
-
-  <script src="/js/navbar.js" defer></script>
 </body>
 </html>

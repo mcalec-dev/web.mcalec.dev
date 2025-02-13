@@ -42,7 +42,7 @@ async function initMusic() {
       if (validUrl) {
         e.src = validUrl;
         e.play();
-        t.setAttribute("title", "Unpause the current song.")
+        t.setAttribute("title", "Unpause the current song.");
         t.classList.add("paused");
         s.style.display = "block";
         n.textContent = songs[currentSong].title;

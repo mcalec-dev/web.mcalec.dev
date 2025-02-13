@@ -8,11 +8,19 @@
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
+    font-size: 1.65rem;
   }
   p {
     cursor: url('/img/cursor/text.cur'), text;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 0px;
+    font-size: 1.15rem;
+    max-width: 60vw;
+  }
+  br {
+    margin: 5px;
   }
 }
