@@ -186,11 +186,12 @@
                 // Login
                 const result = await loginToBluesky(identifier, password);
                 
-                // Check if email verification is required
+                // Check if the API indicated verification is needed
                 if (result.verificationNeeded) {
+                    console.log("Verification needed, showing verification form");
                     verificationData = result.verificationData;
-                    verificationForm.style.display = 'block';
                     loader.style.display = 'none';
+                    verificationForm.style.display = 'block';
                     return;
                 }
                 
@@ -199,6 +200,7 @@
                 await loadProfileAndPosts();
                 
             } catch (error) {
+                console.error("Login error:", error);
                 authError.textContent = error.message;
                 loginForm.style.display = 'block';
                 loader.style.display = 'none';
@@ -220,6 +222,7 @@
                 await loadProfileAndPosts();
                 
             } catch (error) {
+                console.error("Verification error:", error);
                 verifyError.textContent = error.message;
                 verificationForm.style.display = 'block';
                 loader.style.display = 'none';
@@ -229,6 +232,7 @@
         // Helper function to load profile and posts
         async function loadProfileAndPosts() {
             try {
+                console.log("Loading profile with auth data:", authData);
                 // Get profile data
                 const profile = await getProfile(authData.handle, authData.accessJwt);
                 displayProfile(profile);
@@ -242,6 +246,7 @@
                 postsContainer.style.display = 'block';
                 loader.style.display = 'none';
             } catch (error) {
+                console.error("Failed to load profile/posts:", error);
                 throw new Error(`Failed to load data: ${error.message}`);
             }
         }
@@ -256,19 +261,24 @@
             
             const data = await response.json();
             
-            if (response.status === 401 && data.error === 'VerificationRequired') {
-                // Handle case when verification is needed
-                return {
-                    verificationNeeded: true,
-                    verificationData: {
-                        identifier,
-                        password,
-                        verificationMethod: data.method || 'email'
-                    }
-                };
-            }
-            
+            // We need to properly detect verification requirements
+            // This isn't exactly documented but we can look for specific patterns
             if (!response.ok) {
+                if (response.status === 401) {
+                    if (data.error === 'VerificationRequired' || 
+                        data.message?.includes('verification') || 
+                        data.message?.includes('code')) {
+                        console.log("Login requires verification:", data);
+                        return {
+                            verificationNeeded: true,
+                            verificationData: {
+                                identifier,
+                                password,
+                                verificationMethod: data.method || 'email'
+                            }
+                        };
+                    }
+                }
                 throw new Error(data.message || 'Authentication failed. Please check your credentials.');
             }
             
@@ -276,8 +286,8 @@
         }
         
         async function completeEmailVerification(verificationData, code) {
-            // First, we need to request the verification through the API
-            let verifyResponse = await fetch('https://bsky.social/xrpc/com.atproto.server.createSession', {
+            console.log("Attempting verification with code:", code);
+            const verifyResponse = await fetch('https://bsky.social/xrpc/com.atproto.server.createSession', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -389,6 +399,18 @@
                 postsContent.appendChild(postElement);
             });
         }
+
+        // Add this code for testing verification flow
+        // Uncomment this to test the verification form
+        /*
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                // For testing: simulate verification needed
+                loginForm.style.display = 'none';
+                verificationForm.style.display = 'block';
+            }, 1000);
+        });
+        */
     </script>
 </body>
 </html>
