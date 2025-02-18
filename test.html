@@ -3,504 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bluesky Stats</title>
+    <title>Bluesky Stats</title>
     <style>
-        :root {
-            --primary-color: #0085ff;
-            --bg-color: #f5f8ff;
-            --card-bg: white;
-            --text-color: #333;
-            --light-text: #666;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        h1 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-        
-        .profile-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .profile-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 20px;
-        }
-        
-        .profile-details {
-            flex: 1;
-        }
-        
-        .handle {
-            color: var(--light-text);
-            margin-top: 5px;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .stat-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin: 5px 0;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--light-text);
-        }
-        
-        .posts-container {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .posts-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .post {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .post:last-child {
-            border-bottom: none;
-        }
-        
-        .post-content {
-            margin-bottom: 10px;
-        }
-        
-        .post-meta {
-            display: flex;
-            font-size: 0.8rem;
-            color: var(--light-text);
-        }
-        
-        .post-stats {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .post-stat {
-            display: flex;
-            align-items: center;
-        }
-        
-        .post-stat svg {
-            width: 16px;
-            height: 16px;
-            margin-right: 5px;
-        }
-        
-        .post-time {
-            margin-left: auto;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 30px;
-            font-style: italic;
-            color: var(--light-text);
-        }
-        
-        .error-message {
-            background-color: #ffebee;
-            color: #c62828;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        
-        .error-solution {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        
-        .themes {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
-        
-        .theme-switch {
-            background: none;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        pre {
-            background: #f4f4f4;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            overflow-x: auto;
-        }
-        
-        code {
-            font-family: 'Courier New', Courier, monospace;
-        }
-        
-        @media (max-width: 600px) {
-            .profile-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .profile-image {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
-        .dark-mode {
-            --primary-color: #3694ff;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #f5f5f5;
-            --light-text: #aaa;
-        }
-        
-        .dark-mode pre {
-            background: #2a2a2a;
-            border-color: #444;
-            color: #eee;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #e3e3e3;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="themes">
-            <button class="theme-switch" onclick="toggleTheme()">Toggle Dark Mode</button>
+        <h1>Bluesky Profile</h1>
+        <div id="profile">
+            <img id="avatar" src="" alt="Profile Picture">
+            <h2 id="displayName"></h2>
+            <p>@<span id="handle"></span></p>
+            <p><strong>Followers:</strong> <span id="followers"></span></p>
+            <p><strong>Following:</strong> <span id="following"></span></p>
+            <p><strong>Posts:</strong> <span id="postsCount"></span></p>
         </div>
-        
-        <header>
-            <h1>My Bluesky Stats</h1>
-            <p>A live dashboard of my Bluesky activity</p>
-        </header>
-        
-        <div id="profile-section" class="loading">
-            Loading profile information...
-        </div>
-        
-        <div id="stats-section" class="loading">
-            Loading statistics...
-        </div>
-        
-        <div id="posts-section" class="loading">
-            Loading recent posts...
-        </div>
+        <h2>Recent Posts</h2>
+        <ul id="posts"></ul>
     </div>
-    
     <script>
-        // Configuration - replace with your details
-        const USERNAME = 'mcalec.dev'; // example: alice.bsky.social
-        const API_URL = 'https://bsky.social/xrpc';
-        const POST_LIMIT = 5; // Number of posts to display
+const handle = "mcalec.dev"; // Replace with your Bluesky handle
+const apiUrl = `https://bsky.social/xrpc/app.bsky.actor.getProfile?actor=${handle}`;
+
+async function fetchData() {
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error("Failed to fetch data");
         
-        // DOM elements
-        const profileSection = document.getElementById('profile-section');
-        const statsSection = document.getElementById('stats-section');
-        const postsSection = document.getElementById('posts-section');
-        
-        // Functions for rendering
-        function formatNumber(num) {
-            if (num >= 1000000) {
-                return (num / 1000000).toFixed(1) + 'M';
-            } else if (num >= 1000) {
-                return (num / 1000).toFixed(1) + 'K';
-            }
-            return num;
-        }
-        
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            const now = new Date();
-            const diff = now - date;
-            
-            // Less than a minute
-            if (diff < 60000) {
-                return 'just now';
-            }
-            
-            // Less than an hour
-            if (diff < 3600000) {
-                const minutes = Math.floor(diff / 60000);
-                return `${minutes}m ago`;
-            }
-            
-            // Less than a day
-            if (diff < 86400000) {
-                const hours = Math.floor(diff / 3600000);
-                return `${hours}h ago`;
-            }
-            
-            // Less than a week
-            if (diff < 604800000) {
-                const days = Math.floor(diff / 86400000);
-                return `${days}d ago`;
-            }
-            
-            // Format date
-            const options = { year: 'numeric', month: 'short', day: 'numeric' };
-            return date.toLocaleDateString(undefined, options);
-        }
-        
-        // Fetch user profile data
-        async function fetchProfile() {
-            try {
-                const handle = USERNAME.split('.')[0];
-                const response = await fetch(`${API_URL}/app.bsky.actor.getProfile?actor=${USERNAME}`);
-                
-                if (!response.ok) {
-                    if (response.status === 0) {
-                        throw new Error('CORS error - cannot access Bluesky API directly');
-                    } else {
-                        throw new Error(`HTTP error ${response.status}: ${response.statusText}`);
-                    }
-                }
-                
-                const data = await response.json();
-                
-                // Render profile section
-                profileSection.innerHTML = `
-                    <div class="profile-container">
-                        <img src="${data.avatar || '/api/placeholder/100/100'}" alt="Profile" class="profile-image">
-                        <div class="profile-details">
-                            <h2>${data.displayName || handle}</h2>
-                            <p class="handle">@${data.handle}</p>
-                            <p>${data.description || ''}</p>
-                        </div>
-                    </div>
-                `;
-                
-                // Render stats section
-                statsSection.innerHTML = `
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-number">${formatNumber(data.followersCount || 0)}</div>
-                            <div class="stat-label">Followers</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">${formatNumber(data.followsCount || 0)}</div>
-                            <div class="stat-label">Following</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">${formatNumber(data.postsCount || 0)}</div>
-                            <div class="stat-label">Posts</div>
-                        </div>
-                    </div>
-                `;
-                
-                return data.did;
-            } catch (error) {
-                // Check if it's a CORS error
-                if (error.message.includes('CORS') || error.message === 'Failed to fetch') {
-                    showCorsErrorMessage();
-                } else {
-                    profileSection.innerHTML = `
-                        <div class="error-message">
-                            <h3>Error: Failed to load profile</h3>
-                            <p>${error.message}</p>
-                            <p>Make sure your Bluesky username is correct in the code.</p>
-                        </div>
-                    `;
-                }
-                return null;
-            }
-        }
-        
-        // Show CORS error message with solutions
-        function showCorsErrorMessage() {
-            const errorHtml = `
-                <div class="error-message">
-                    <h3>CORS Error: Cannot Access Bluesky API Directly</h3>
-                    <p>Due to browser security restrictions (CORS), your browser cannot directly access the Bluesky API from a static website.</p>
-                </div>
-                
-                <div class="error-solution">
-                    <h3>Solutions:</h3>
-                    <ol>
-                        <li>
-                            <strong>Use a CORS Proxy</strong>
-                            <p>You can use a service like cors-anywhere to proxy your requests. Update your code like this:</p>
-                            <pre><code>const API_URL = 'https://cors-anywhere.herokuapp.com/https://bsky.social/xrpc';</code></pre>
-                            <p>Note: You may need to request temporary access to the demo server at: <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">https://cors-anywhere.herokuapp.com/corsdemo</a></p>
-                        </li>
-                        <li>
-                            <strong>Create Your Own Backend</strong>
-                            <p>Create a simple server that forwards requests to the Bluesky API and handles CORS headers.</p>
-                        </li>
-                        <li>
-                            <strong>Use a Serverless Function</strong>
-                            <p>Deploy a serverless function (e.g., AWS Lambda, Vercel Functions, Netlify Functions) that acts as a proxy.</p>
-                        </li>
-                    </ol>
-                </div>
-                
-                <div class="error-solution">
-                    <h3>Quick Testing Fix:</h3>
-                    <p>For temporary testing, you can install a CORS-disabling browser extension:</p>
-                    <ul>
-                        <li>Chrome: <a href="https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank">CORS Unblock</a></li>
-                        <li>Firefox: <a href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/" target="_blank">CORS Everywhere</a></li>
-                    </ul>
-                    <p><strong>Warning:</strong> Only use these extensions temporarily for testing as they reduce browser security.</p>
-                </div>
-            `;
-            
-            profileSection.innerHTML = errorHtml;
-            statsSection.innerHTML = '';
-            postsSection.innerHTML = '';
-        }
-        
-        // Fetch recent posts
-        async function fetchPosts(did) {
-            if (!did) return;
-            
-            try {
-                const response = await fetch(`${API_URL}/app.bsky.feed.getAuthorFeed?actor=${did}&limit=${POST_LIMIT}`);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error ${response.status}`);
-                }
-                
-                const data = await response.json();
-                
-                // Render posts section
-                postsSection.innerHTML = `
-                    <div class="posts-container">
-                        <div class="posts-header">
-                            <h2>Recent Posts</h2>
-                        </div>
-                        <div class="posts-list">
-                            ${data.feed.map(post => {
-                                const record = post.post.record;
-                                return `
-                                    <div class="post">
-                                        <div class="post-content">${record.text}</div>
-                                        <div class="post-meta">
-                                            <div class="post-stats">
-                                                <div class="post-stat">
-                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                                    </svg>
-                                                    ${post.post.likeCount || 0}
-                                                </div>
-                                                <div class="post-stat">
-                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z" />
-                                                    </svg>
-                                                    ${post.post.replyCount || 0}
-                                                </div>
-                                                <div class="post-stat">
-                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
-                                                        <polyline points="16 6 12 2 8 6" />
-                                                        <line x1="12" y1="2" x2="12" y2="15" />
-                                                    </svg>
-                                                    ${post.post.repostCount || 0}
-                                                </div>
-                                            </div>
-                                            <div class="post-time">${formatDate(record.createdAt)}</div>
-                                        </div>
-                                    </div>
-                                `;
-                            }).join('')}
-                        </div>
-                    </div>
-                `;
-            } catch (error) {
-                // Only show post error if profile loaded successfully
-                if (did) {
-                    postsSection.innerHTML = `
-                        <div class="error-message">
-                            <h3>Error: Failed to load posts</h3>
-                            <p>${error.message}</p>
-                        </div>
-                    `;
-                }
-            }
-        }
-        
-        // Theme toggle
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-        }
-        
-        // Initialize on page load
-        async function initialize() {
-            // Apply saved theme
-            if (localStorage.getItem('theme') === 'dark') {
-                document.body.classList.add('dark-mode');
-            }
-            
-            // Fetch data
-            const did = await fetchProfile();
-            await fetchPosts(did);
-        }
-        
-        // Start the app
-        initialize();
+        const data = await response.json();
+        document.getElementById("avatar").src = data.avatar;
+        document.getElementById("displayName").innerText = data.displayName;
+        document.getElementById("handle").innerText = data.handle;
+        document.getElementById("followers").innerText = data.followersCount;
+        document.getElementById("following").innerText = data.followsCount;
+        document.getElementById("postsCount").innerText = data.postsCount;
+
+        fetchPosts();
+    } catch (error) {
+        console.error("Error fetching profile:", error);
+    }
+}
+
+async function fetchPosts() {
+    const postsUrl = `https://bsky.social/xrpc/app.bsky.feed.getAuthorFeed?actor=${handle}`;
+
+    try {
+        const response = await fetch(postsUrl);
+        if (!response.ok) throw new Error("Failed to fetch posts");
+
+        const data = await response.json();
+        const postsList = document.getElementById("posts");
+        postsList.innerHTML = "";
+
+        data.feed.slice(0, 5).forEach(post => {
+            const li = document.createElement("li");
+            li.innerText = post.record.text;
+            postsList.appendChild(li);
+        });
+    } catch (error) {
+        console.error("Error fetching posts:", error);
+    }
+}
+
+fetchData();
     </script>
 </body>
 </html>
