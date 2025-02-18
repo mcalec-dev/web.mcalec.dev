@@ -5,43 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bluesky Stats</title>
     <style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 20px;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
 
-.container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 500px;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-#avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
+        #avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
+        ul {
+            list-style: none;
+            padding: 0;
+        }
 
-li {
-    background: #e3e3e3;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-}
+        li {
+            background: #e3e3e3;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #login-container {
+            display: none;
+        }
+
+        #profile-container {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div id="login-container" class="container">
+        <h1>Login</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required><br><br>
+            <input type="password" id="password" placeholder="Password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="profile-container" class="container">
         <h1>Bluesky Profile</h1>
         <div id="profile">
             <img id="avatar" src="" alt="Profile Picture">
@@ -54,51 +71,67 @@ li {
         <h2>Recent Posts</h2>
         <ul id="posts"></ul>
     </div>
+
     <script>
-const handle = "mcalec.dev"; // Replace with your Bluesky handle
-const apiUrl = `https://bsky.social/xrpc/app.bsky.actor.getProfile?actor=${handle}`;
+        const handle = "mcalec.dev"; // Replace with your Bluesky handle
+        const apiUrl = `https://bsky.social/xrpc/app.bsky.actor.getProfile?actor=${handle}`;
 
-async function fetchData() {
-    try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error("Failed to fetch data");
-        
-        const data = await response.json();
-        document.getElementById("avatar").src = data.avatar;
-        document.getElementById("displayName").innerText = data.displayName;
-        document.getElementById("handle").innerText = data.handle;
-        document.getElementById("followers").innerText = data.followersCount;
-        document.getElementById("following").innerText = data.followsCount;
-        document.getElementById("postsCount").innerText = data.postsCount;
+        const predefinedUsername = "user"; // Replace with your predefined username
+        const predefinedPassword = "password"; // Replace with your predefined password
 
-        fetchPosts();
-    } catch (error) {
-        console.error("Error fetching profile:", error);
-    }
-}
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
 
-async function fetchPosts() {
-    const postsUrl = `https://bsky.social/xrpc/app.bsky.feed.getAuthorFeed?actor=${handle}`;
-
-    try {
-        const response = await fetch(postsUrl);
-        if (!response.ok) throw new Error("Failed to fetch posts");
-
-        const data = await response.json();
-        const postsList = document.getElementById("posts");
-        postsList.innerHTML = "";
-
-        data.feed.slice(0, 5).forEach(post => {
-            const li = document.createElement("li");
-            li.innerText = post.record.text;
-            postsList.appendChild(li);
+            if (username === predefinedUsername && password === predefinedPassword) {
+                document.getElementById("login-container").style.display = "none";
+                document.getElementById("profile-container").style.display = "block";
+                fetchData();
+            } else {
+                alert("Invalid username or password");
+            }
         });
-    } catch (error) {
-        console.error("Error fetching posts:", error);
-    }
-}
 
-fetchData();
+        async function fetchData() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error("Failed to fetch data");
+
+                const data = await response.json();
+                document.getElementById("avatar").src = data.avatar;
+                document.getElementById("displayName").innerText = data.displayName;
+                document.getElementById("handle").innerText = data.handle;
+                document.getElementById("followers").innerText = data.followersCount;
+                document.getElementById("following").innerText = data.followsCount;
+                document.getElementById("postsCount").innerText = data.postsCount;
+
+                fetchPosts();
+            } catch (error) {
+                console.error("Error fetching profile:", error);
+            }
+        }
+
+        async function fetchPosts() {
+            const postsUrl = `https://bsky.social/xrpc/app.bsky.feed.getAuthorFeed?actor=${handle}`;
+
+            try {
+                const response = await fetch(postsUrl);
+                if (!response.ok) throw new Error("Failed to fetch posts");
+
+                const data = await response.json();
+                const postsList = document.getElementById("posts");
+                postsList.innerHTML = "";
+
+                data.feed.slice(0, 5).forEach(post => {
+                    const li = document.createElement("li");
+                    li.innerText = post.record.text;
+                    postsList.appendChild(li);
+                });
+            } catch (error) {
+                console.error("Error fetching posts:", error);
+            }
+        }
     </script>
 </body>
 </html>
