@@ -156,6 +156,7 @@
         // Store authentication data and verification info
         let authData = null;
         let verificationData = null;
+        let verificationToken = null;  // Will store the token/confirmation ID from initial response
         
         // DOM elements
         const loginForm = document.getElementById('loginForm');
@@ -190,6 +191,7 @@
                 if (result.verificationNeeded) {
                     console.log("Verification needed, showing verification form");
                     verificationData = result.verificationData;
+                    verificationToken = result.verificationToken;  // Store the token/ID for verification
                     loader.style.display = 'none';
                     verificationForm.style.display = 'block';
                     return;
@@ -217,8 +219,13 @@
             loader.style.display = 'block';
             
             try {
-                // Complete verification
-                authData = await completeEmailVerification(verificationData, code);
+                // Complete verification with the token we received during login
+                authData = await completeEmailVerification(
+                    verificationData.identifier,
+                    verificationData.password,
+                    code,
+                    verificationToken
+                );
                 await loadProfileAndPosts();
                 
             } catch (error) {
@@ -261,20 +268,23 @@
             
             const data = await response.json();
             
-            // We need to properly detect verification requirements
-            // This isn't exactly documented but we can look for specific patterns
             if (!response.ok) {
-                if (response.status === 401) {
-                    if (data.error === 'VerificationRequired' || 
-                        data.message?.includes('verification') || 
-                        data.message?.includes('code')) {
-                        console.log("Login requires verification:", data);
+                // This is actual Bluesky response pattern for 2FA
+                if (response.status === 401 && data.error === 'InvalidPassword') {
+                    if (data.message?.toLowerCase().includes('confirmation code') ||
+                        data.message?.toLowerCase().includes('verification code')) {
+                        
+                        console.log("Verification required detected:", data);
+                        
+                        // Store any confirmation ID or token if provided
+                        const token = data.confirmationId || data.token || null;
+                        
                         return {
                             verificationNeeded: true,
+                            verificationToken: token,
                             verificationData: {
                                 identifier,
-                                password,
-                                verificationMethod: data.method || 'email'
+                                password
                             }
                         };
                     }
@@ -285,16 +295,25 @@
             return data;
         }
         
-        async function completeEmailVerification(verificationData, code) {
-            console.log("Attempting verification with code:", code);
+        async function completeEmailVerification(identifier, password, code, token) {
+            console.log("Attempting verification with code:", code, "and token:", token);
+            
+            // Build request body based on whether we have a token
+            const requestBody = {
+                identifier: identifier,
+                password: password,
+                confirmationCode: code  // Use the proper field name expected by Bluesky
+            };
+            
+            // Add token if we have one
+            if (token) {
+                requestBody.confirmationId = token;
+            }
+            
             const verifyResponse = await fetch('https://bsky.social/xrpc/com.atproto.server.createSession', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    identifier: verificationData.identifier,
-                    password: verificationData.password,
-                    verificationCode: code
-                })
+                body: JSON.stringify(requestBody)
             });
             
             const data = await verifyResponse.json();
@@ -398,18 +417,7 @@
                 
                 postsContent.appendChild(postElement);
             });
-        };
-
-        // Add this code for testing verification flow
-        // Uncomment this to test the verification form
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                // For testing: simulate verification needed
-                loginForm.style.display = 'none';
-                verificationForm.style.display = 'block';
-            }, 1000);
-        });
+        }
     </script>
 </body>
 </html>
