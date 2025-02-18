@@ -37,7 +37,11 @@ async function initMusic() {
         s = document.getElementById("music-skip"),
         n = document.getElementById("music-info");
     async function o() {
-      currentSong = (currentSong + 1) % songs.length;
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * songs.length);
+    } while (newIndex === currentSong && songs.length > 1);
+      currentSong = newIndex;
       const validUrl = await getValidSongUrl(songs[currentSong].src);
       if (validUrl) {
         e.src = validUrl;
