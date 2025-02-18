@@ -155,7 +155,15 @@
         .error-message {
             background-color: #ffebee;
             color: #c62828;
-            padding: 10px;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .error-solution {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 20px;
             border-radius: 5px;
             margin: 20px 0;
         }
@@ -173,6 +181,18 @@
             padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
+        }
+        
+        pre {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
         }
         
         @media (max-width: 600px) {
@@ -197,6 +217,12 @@
             --card-bg: #1e1e1e;
             --text-color: #f5f5f5;
             --light-text: #aaa;
+        }
+        
+        .dark-mode pre {
+            background: #2a2a2a;
+            border-color: #444;
+            color: #eee;
         }
     </style>
 </head>
@@ -285,7 +311,11 @@
                 const response = await fetch(`${API_URL}/app.bsky.actor.getProfile?actor=${USERNAME}`);
                 
                 if (!response.ok) {
-                    throw new Error('Failed to fetch profile');
+                    if (response.status === 0) {
+                        throw new Error('CORS error - cannot access Bluesky API directly');
+                    } else {
+                        throw new Error(`HTTP error ${response.status}: ${response.statusText}`);
+                    }
                 }
                 
                 const data = await response.json();
@@ -322,13 +352,64 @@
                 
                 return data.did;
             } catch (error) {
-                profileSection.innerHTML = `
-                    <div class="error-message">
-                        Failed to load profile: ${error.message}
-                    </div>
-                `;
+                // Check if it's a CORS error
+                if (error.message.includes('CORS') || error.message === 'Failed to fetch') {
+                    showCorsErrorMessage();
+                } else {
+                    profileSection.innerHTML = `
+                        <div class="error-message">
+                            <h3>Error: Failed to load profile</h3>
+                            <p>${error.message}</p>
+                            <p>Make sure your Bluesky username is correct in the code.</p>
+                        </div>
+                    `;
+                }
                 return null;
             }
+        }
+        
+        // Show CORS error message with solutions
+        function showCorsErrorMessage() {
+            const errorHtml = `
+                <div class="error-message">
+                    <h3>CORS Error: Cannot Access Bluesky API Directly</h3>
+                    <p>Due to browser security restrictions (CORS), your browser cannot directly access the Bluesky API from a static website.</p>
+                </div>
+                
+                <div class="error-solution">
+                    <h3>Solutions:</h3>
+                    <ol>
+                        <li>
+                            <strong>Use a CORS Proxy</strong>
+                            <p>You can use a service like cors-anywhere to proxy your requests. Update your code like this:</p>
+                            <pre><code>const API_URL = 'https://cors-anywhere.herokuapp.com/https://bsky.social/xrpc';</code></pre>
+                            <p>Note: You may need to request temporary access to the demo server at: <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">https://cors-anywhere.herokuapp.com/corsdemo</a></p>
+                        </li>
+                        <li>
+                            <strong>Create Your Own Backend</strong>
+                            <p>Create a simple server that forwards requests to the Bluesky API and handles CORS headers.</p>
+                        </li>
+                        <li>
+                            <strong>Use a Serverless Function</strong>
+                            <p>Deploy a serverless function (e.g., AWS Lambda, Vercel Functions, Netlify Functions) that acts as a proxy.</p>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="error-solution">
+                    <h3>Quick Testing Fix:</h3>
+                    <p>For temporary testing, you can install a CORS-disabling browser extension:</p>
+                    <ul>
+                        <li>Chrome: <a href="https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank">CORS Unblock</a></li>
+                        <li>Firefox: <a href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/" target="_blank">CORS Everywhere</a></li>
+                    </ul>
+                    <p><strong>Warning:</strong> Only use these extensions temporarily for testing as they reduce browser security.</p>
+                </div>
+            `;
+            
+            profileSection.innerHTML = errorHtml;
+            statsSection.innerHTML = '';
+            postsSection.innerHTML = '';
         }
         
         // Fetch recent posts
@@ -339,7 +420,7 @@
                 const response = await fetch(`${API_URL}/app.bsky.feed.getAuthorFeed?actor=${did}&limit=${POST_LIMIT}`);
                 
                 if (!response.ok) {
-                    throw new Error('Failed to fetch posts');
+                    throw new Error(`HTTP error ${response.status}`);
                 }
                 
                 const data = await response.json();
@@ -388,11 +469,15 @@
                     </div>
                 `;
             } catch (error) {
-                postsSection.innerHTML = `
-                    <div class="error-message">
-                        Failed to load posts: ${error.message}
-                    </div>
-                `;
+                // Only show post error if profile loaded successfully
+                if (did) {
+                    postsSection.innerHTML = `
+                        <div class="error-message">
+                            <h3>Error: Failed to load posts</h3>
+                            <p>${error.message}</p>
+                        </div>
+                    `;
+                }
             }
         }
         
