@@ -15,6 +15,7 @@ body {
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  font-family: Tahoma, Verdana, sans-serif;
 }
 body::-webkit-scrollbar {
   display: none;
