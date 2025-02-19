@@ -1,34 +1,14 @@
 let songs = [];
 let currentSong = 0;
-const baseUrls = [ // urls here
-  "//cdn.mcalec.dev/audio/mp3/",
-  "//cdn.mcalec.dev/audio/opus/",
-];
+const baseUrl = "//cdn.mcalec.dev/audio/";
 async function loadSongs() {
   try {
-    const response = await fetch('/json/songs.json'); // json here
+    const response = await fetch('/json/songs.json');
     songs = await response.json();
     initMusic();
   } catch (error) {
     console.error('Error loading songs:', error);
   }
-}
-async function checkUrlExists(url) {
-  try {
-    const response = await fetch(url, { method: 'HEAD' });
-    return response.ok;
-  } catch {
-    return false;
-  }
-}
-async function getValidSongUrl(songSrc) {
-  for (const baseUrl of baseUrls) {
-    const fullUrl = `${baseUrl}${songSrc}`;
-    if (await checkUrlExists(fullUrl)) {
-      return fullUrl;
-    }
-  }
-  return null;
 }
 async function initMusic() {
   if (songs.length === 0) return;
@@ -42,27 +22,17 @@ async function initMusic() {
       newIndex = Math.floor(Math.random() * songs.length);
     } while (newIndex === currentSong && songs.length > 1);
       currentSong = newIndex;
-      const validUrl = await getValidSongUrl(songs[currentSong].src);
-      if (validUrl) {
-        e.src = validUrl;
-        e.play();
-        t.setAttribute("title", "Unpause the current song.");
-        t.classList.add("paused");
-        s.style.display = "block";
-        n.textContent = songs[currentSong].title;
-        n.setAttribute("title", songs[currentSong].title);
-      } else {
-        console.error(`Song not found: ${songs[currentSong].src}`);
-      }
+      e.src = `${baseUrl}${songs[currentSong].src}`;
+      e.play();
+      t.setAttribute("title", "Unpause the current song.");
+      t.classList.add("paused");
+      s.style.display = "block";
+      n.textContent = songs[currentSong].title;
+      n.setAttribute("title", songs[currentSong].title);
     }
     currentSong = Math.floor(Math.random() * songs.length);
-    const initialUrl = await getValidSongUrl(songs[currentSong].src);
-    if (initialUrl) {
-      e.src = initialUrl;
-      n.setAttribute("title", songs[currentSong].title);
-    } else {
-      console.error(`Initial song not found: ${songs[currentSong].src}`);
-    }
+    e.src = `${baseUrl}${songs[currentSong].src}`;
+    n.setAttribute("title", songs[currentSong].title);
     t.addEventListener("click", async function () {
     if (e.paused) {
       e.play();
