@@ -15,7 +15,7 @@ body {
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  font-family: Tahoma, Verdana, sans-serif;
+  font-family: LatoRegular, Verdana, Geneva, Tahoma, sans-serif;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -34,7 +34,8 @@ i {font-family: LatoRegularItalic;}
 a {
   font-family: LatoRegular;
   cursor: url('/img/cursor/pointer.cur'), pointer;
-  color: #ddd;text-decoration: underline;
+  color: #ddd;
+  text-decoration: underline;
   transition: color 0.3s ease;
 }
 a:hover {color: #999;}
